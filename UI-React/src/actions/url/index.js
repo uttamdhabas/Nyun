@@ -1,11 +1,17 @@
+
+import axios from 'axios';
+
+
+
 let nextTodoId = 0
-export const addTodo = (text) => {
+export function addTodo(text) {
   return {
     type: 'ADD_TODO',
     id: nextTodoId++,
     text
-  }
+  };
 }
+
 
 export const setVisibilityFilter = (filter) => {
   return {
@@ -19,4 +25,16 @@ export const toggleTodo = (id) => {
     type: 'TOGGLE_TODO',
     id
   }
+}
+export function addUrl(event) {
+  
+  return dispatch => {
+    
+    return axios.post('/api/v1/url', event).then(res => {
+      const key = res.data.key;
+      dispatch(addTodo(key))
+      
+      
+    });
+  };
 }
