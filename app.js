@@ -23,7 +23,10 @@
 // no matter where we actually lift from.
 // > Note: This is not required in order to lift, but it is a convenient default.
 process.chdir(__dirname);
-
+require('newrelic');
+var raven = require('raven');
+var client = new raven.Client('https://0fdc82732d9e463c8213f307126380ab:4a0a6219b7eb488db4c4ce16843c34d4@sentry.io/118280');
+client.patchGlobal();
 // Attempt to import `sails`.
 var sails;
 try {
@@ -54,7 +57,6 @@ try {
     rc = function () { return {}; };
   }
 }
-
 
 // Start server
 sails.lift(rc('sails'));
