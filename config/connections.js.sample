@@ -42,10 +42,10 @@ module.exports.connections = {
   ***************************************************************************/
    someMysqlServer: {
      adapter: 'sails-mysql',
-     host: 'musicdb.cu8g0agj51xo.ap-southeast-1.rds.amazonaws.com',
-     user: 'youdi', //optional
-     password: 'youdi451', //optional
-     database: 'Nyun' //optional
+     host: 'localhost',
+     user: 'abc', //optional
+     password: 'password', //optional
+     database: 'name' //optional
    },
 
   /***************************************************************************
