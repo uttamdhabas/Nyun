@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
+var Validator = require('validator')
 module.exports = {
   // Doing a DELETE /user/:parentid/message/:id will not delete the message itself
   // We do that here.
@@ -19,6 +19,9 @@ module.exports = {
   create: function(req, res) {
     res.json(301, 'To create a user go to /auth/register');
   }
+  
+
+  
 };
 
 function destroyMessage(req, res) {

@@ -1,2 +1,2 @@
 npm run build
-cp -r  build/* /home/ubuntu/Nyun/assets
+cp -r  build/* ../assets/

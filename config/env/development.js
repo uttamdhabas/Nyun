@@ -20,5 +20,6 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
+  //serviceUrl:"localhost:1337/",
 
 };

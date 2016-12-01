@@ -1,10 +1,17 @@
 import React, { PropTypes } from 'react'
-
-const Todo = ({ onClick, completed, text }) => (
+import { Table } from 'semantic-ui-react'
+const Todo = ({ onClick, completed, text,hits }) => (
  
-  <li  className="list-group-item" >
-    {text}
-  </li>
+ 
+  <Table.Row>
+          <Table.HeaderCell>{text.target}</Table.HeaderCell>
+          <Table.HeaderCell>{text.shortUrl}</Table.HeaderCell>
+          
+          <Table.HeaderCell>{text.hits}</Table.HeaderCell>
+          <Table.HeaderCell>{text.createdAt}</Table.HeaderCell>
+
+  </Table.Row>
+  
   
 
 

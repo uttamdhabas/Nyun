@@ -27,7 +27,12 @@ module.exports.policies = {
     'populate': ['tokenAuth', 'ownAssociations'],
     'remove': ['tokenAuth', 'ownAssociations'],
     '*': false
+  },
+  'UrlController': {
+    'create': ['tokenAuth', 'ownURL'],
+    'redirect': true
   }
+
 
   // Here's an example of mapping some policies to run before
   // a controller and its actions
