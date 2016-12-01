@@ -31,7 +31,7 @@ Group.propTypes = {
   error: React.PropTypes.string,
   type: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func.isRequired,
-  checkUserExists: React.PropTypes.func
+  
 }
 
 Group.defaultProps = {

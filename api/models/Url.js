@@ -8,14 +8,27 @@
 module.exports = {
 
   attributes: {
-    key: {
-      type: 'string',
-      primaryKey: true
+    hits: {
+      type: 'integer',
+      defaultsTo: 0
+
+      
     },
     target: {
       type: 'string',
       required: true
+    },
+
+    user: {
+      model: 'user'
+    },
+
+    requests: {
+      collection: 'request',
+      via: 'url'
     }
+
+
   }
   
 };

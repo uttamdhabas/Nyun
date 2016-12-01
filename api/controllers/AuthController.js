@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing auths
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
+var Validator = require('validator')
 module.exports = {
 
   authenticate: function(req, res) {
@@ -35,13 +35,30 @@ module.exports = {
     })
   },
 
+
   register: function(req, res) {
-    //TODO: Do some validation on the input
-    if (req.body.password !== req.body.confirmPassword) {
+    var email=req.param('email');
+    var password=req.param('password');
+    var confirmPassword=req.param('confirmPassword');
+
+    if (Validator.isEmpty(email)) {
+      return res.json(401, {err: 'Email is required'});
+    }
+    if (!Validator.isEmail(email)) {
+      return res.json(401, {err: 'Email is invalid'});
+    }
+    if (Validator.isEmpty(password)) {
+      return res.json(401, {err: 'password is required'});
+    }
+    if (Validator.isEmpty(confirmPassword)) {
+      return res.json(401, {err: 'confirmPassword is required'});
+    }
+    if (!Validator.equals(password,confirmPassword)) {
       return res.json(401, {err: 'Password doesn\'t match'});
     }
+    
 
-    User.create({email: req.body.email, password: req.body.password}).exec(function(err, user) {
+    User.create({email: email, password: password}).exec(function(err, user) {
       if (err) {
         res.json(err.status, {err: err});
         return;
@@ -50,5 +67,28 @@ module.exports = {
         res.json({user: user, token: sailsTokenAuth.issueToken({sid: user.id})});
       }
     });
+  },
+
+
+  check: function(req, res) {
+    var email= req.param('email');
+    
+    if (Validator.isEmpty(email)) {
+      return res.json(401, {err: 'Email is required'});
+    }
+    if (!Validator.isEmail(email)) {
+      return res.json(401, {err: 'Email is invalid'});
+    }
+    User.findOneByEmail(email, function(err, user) {
+      if(!user){
+        return res.json(401, {err: 'User doesn\'t exist'});
+      }
+      if (err) {
+        res.json(err.status, {err: err});
+        return;
+      }
+      return res.json({status:"User exist"});
+    })
+    
   }
 };

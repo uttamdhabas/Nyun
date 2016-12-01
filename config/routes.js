@@ -38,25 +38,31 @@ module.exports.routes = {
   'Post /api/v1/auth/register': {
     controller: 'AuthController',
     action: 'register'
-},
-'Post /api/v1/auth/authenticate': {
-    controller: 'AuthController',
-    action: 'authenticate'
-},
-'Post /api/v1/url': {
-    controller: 'UrlController',
-    action: 'create'
-},
-'get /api/v1/url/:key': {
-    controller: 'UrlController',
-    action: 'find',
-    skipAssets: true
-},
-'get /:key': {
-    controller: 'UrlController',
-    action: 'redirect',
-    skipAssets: true
-}
+  },
+  'Post /api/v1/auth/authenticate': {
+      controller: 'AuthController',
+      action: 'authenticate'
+  },
+  'Post /api/v1/url': {
+      controller: 'UrlController',
+      action: 'create'
+  },
+  'get /api/v1/auth/check/:email': {
+      controller: 'AuthController',
+      action: 'check',
+      
+  },
+  'post /api/v1/url': {
+      controller: 'UrlController',
+      action: 'create',
+      
+  },
+  'get /:key': {
+      controller: 'UrlController',
+      action: 'redirect',
+      skipAssets: true
+  }
+  
 
 
   /***************************************************************************
