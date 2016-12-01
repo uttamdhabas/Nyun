@@ -40,12 +40,7 @@ class AddTodo extends React.Component {
       );
     }
   }
-  componentDidMount() {
-    axios.get('/user/3').then(data => {
-      this.setState( { urls: data.urls } );
-      console.log(this.urls)
-    });
-  }
+  
   render() {
     const { target, errors, isLoading } = this.state;
   return (
