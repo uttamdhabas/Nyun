@@ -26,6 +26,7 @@ module.exports = {
    ***************************************************************************/
 
    port: 80,
+   //serviceUrl: "http://ec2-54-179-151-215.ap-southeast-1.compute.amazonaws.com/",
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *

@@ -31,8 +31,11 @@ export function addUrl(event) {
   return dispatch => {
     
     return axios.post('/api/v1/url', event).then(res => {
-      const key = res.data.key;
-      dispatch(addTodo(key))
+      const data = res.data;
+      if(data.new){
+        dispatch(addTodo(data))
+      }
+      
       
       
     });

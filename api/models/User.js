@@ -19,8 +19,8 @@ module.exports = {
     encryptedPassword: {
       type: 'string'
     },
-    messages: {
-      collection: 'message',
+    urls: {
+      collection: 'url',
       via: 'user'
     },
     toJSON: function() {

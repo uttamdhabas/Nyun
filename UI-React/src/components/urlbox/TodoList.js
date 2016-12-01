@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
-
+import { Table } from 'semantic-ui-react'
 const TodoList = ({ todos, onTodoClick }) => (
   
-  <div className="list-group">
+ 
+   <Table.Body>
     {todos.map(todo =>
       <Todo
         key={todo.id}
@@ -11,7 +12,7 @@ const TodoList = ({ todos, onTodoClick }) => (
         onClick={() => onTodoClick(todo.id)}
       />
     )}
-  </div>
+  </Table.Body>
   
 )
 

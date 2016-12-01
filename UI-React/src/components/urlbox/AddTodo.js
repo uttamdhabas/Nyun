@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../../actions/url/index'
-import { addUrl } from '../../actions/url/index';
+
+import validateInput from '../../validations/url';
+
 import Group from '../common/Group';
 
 class AddTodo extends React.Component {
@@ -10,11 +10,21 @@ class AddTodo extends React.Component {
     this.state = {
       target: '',
       errors: {},
-      isLoading: false
+      isLoading: false,
+      urls:[]
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+  isValid() {
+    const { errors, isValid } = validateInput(this.state);
+
+    if (!isValid) {
+      this.setState({ errors });
+    }
+
+    return isValid;
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -22,7 +32,19 @@ class AddTodo extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.addUrl(this.state);
+    if (this.isValid()) {
+      this.setState({ errors: {}, isLoading: true });
+      this.props.addUrl(this.state).then(
+        
+        (err) => this.setState({ errors: err.response.data.errors, isLoading: false })
+      );
+    }
+  }
+  componentDidMount() {
+    axios.get('/user/3').then(data => {
+      this.setState( { urls: data.urls } );
+      console.log(this.urls)
+    });
   }
   render() {
     const { target, errors, isLoading } = this.state;
@@ -34,16 +56,17 @@ class AddTodo extends React.Component {
       <form onSubmit={this.onSubmit}>
      
 
+        
         <Group
-          field="target"
-          label=""
-          name="target"
-          value={target}
-          onChange={this.onChange}
           error={errors.target}
+          label=""
+          onChange={this.onChange}
+          
+          value={this.state.target}
+          field="target"
         />
        
-
+        
       
       
         
@@ -56,5 +79,8 @@ class AddTodo extends React.Component {
 AddTodo.propTypes = {
   addUrl: React.PropTypes.func.isRequired
 }
+AddTodo.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
-export default connect(null, { addUrl })(AddTodo);
+export default AddTodo
