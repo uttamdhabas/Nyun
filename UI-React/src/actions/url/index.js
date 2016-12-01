@@ -1,6 +1,7 @@
 
 import axios from 'axios';
-
+import React from 'react'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 
 let nextTodoId = 0
@@ -34,6 +35,8 @@ export function addUrl(event) {
       const data = res.data;
       if(data.new){
         dispatch(addTodo(data))
+        
+
       }
       
       
@@ -41,3 +44,4 @@ export function addUrl(event) {
     });
   };
 }
+

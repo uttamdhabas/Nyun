@@ -7,6 +7,7 @@ class NavigationBar extends React.Component {
   logout(e) {
     e.preventDefault();
     this.props.logout();
+    this.context.router.push('/login');
   }
 
   render() {

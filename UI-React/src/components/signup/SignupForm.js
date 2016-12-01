@@ -41,7 +41,7 @@ class SignupForm extends React.Component {
       this.props.isUserExists(val).then(res => {
         let errors = this.state.errors;
         let invalid;
-        if (res.data.user) {
+        if (res.data.status) {
           errors[field] = 'There is user with such ' + field;
           invalid = true;
         } else {
@@ -64,7 +64,7 @@ class SignupForm extends React.Component {
             type: 'success',
             text: 'You signed up successfully. Welcome!'
           });
-          this.context.router.push('/');
+          this.context.router.push('/login');
         },
         (err) => this.setState({ errors: err.response.data, isLoading: false })
       );

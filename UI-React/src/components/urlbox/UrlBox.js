@@ -22,7 +22,8 @@ class UrlBox extends React.Component {
           <Table.HeaderCell>Orignal URL</Table.HeaderCell>
           <Table.HeaderCell>Short URL</Table.HeaderCell>
           <Table.HeaderCell>Hits</Table.HeaderCell>
-          <Table.HeaderCell>Created At</Table.HeaderCell>
+          
+          <Table.HeaderCell>QRCode</Table.HeaderCell>
 
         </Table.Row>
       </Table.Header>
