@@ -30,7 +30,7 @@ class UrlBox extends React.Component {
     <VisibleTodoList />
     </Table>
    
-    <Footer />
+    
     </div>
     
   

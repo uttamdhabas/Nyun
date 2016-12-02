@@ -44,4 +44,13 @@ export function addUrl(url) {
     });
   };
 }
+export function fetchURL() {
+  const request=axios.get('/user/1');
+  return (dispatch)=>{
+    request.then(({data})=>{
+      dispatch({type:'FETCH_URLS', payload:data.url})
+    });
+  };
+  // body...
+}
 
