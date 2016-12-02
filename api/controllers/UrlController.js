@@ -5,9 +5,6 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 var Validator = require('validator');
-var geoip = require('geoip-lite');
-var useragent = require('useragent');
-useragent(true);
 module.exports = {
   
   create: function(req, res) {
@@ -22,7 +19,7 @@ module.exports = {
           return res.badRequest("The provided url is not valid.");
         }
     
-    
+        
 
         Url.findOne({user:currentUserId,target:target}).exec(function(err, url) {
                 if(url){
@@ -70,13 +67,8 @@ module.exports = {
 
               
             });
-        var geo_location = geoip.lookup(requestData.getRemoteIP(req));
-
-        console.log(geo_location);
-        var agent = useragent.lookup(req.headers['user-agent']);
-        var os=agent.os.toString();
-        var browser=agent.toAgent();
-        console.log(os,browser)
+        requestData.saveData(req,id);
+        
       }
       
     });

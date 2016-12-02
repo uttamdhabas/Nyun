@@ -37,18 +37,22 @@ class SignupForm extends React.Component {
   checkUserExists(e) {
     const field = e.target.name;
     const val = e.target.value;
+    this.setState({ errors: {}, isLoading: false });
     if (val !== '') {
       this.props.isUserExists(val).then(res => {
         let errors = this.state.errors;
         let invalid;
+        let isLoading;
         if (res.data.status) {
           errors[field] = 'There is user with such ' + field;
           invalid = true;
+          isLoading=true;
         } else {
           errors[field] = '';
           invalid = false;
+          isLoading=false;
         }
-        this.setState({ errors, invalid });
+        this.setState({ errors :errors, invalid:invalid,isLoading:isLoading });
       });
     }
   }

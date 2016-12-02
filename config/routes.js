@@ -52,11 +52,6 @@ module.exports.routes = {
       action: 'check',
       
   },
-  'post /api/v1/url': {
-      controller: 'UrlController',
-      action: 'create',
-      
-  },
   'get /:key': {
       controller: 'UrlController',
       action: 'redirect',

@@ -1,24 +1,16 @@
 /**
 * Url.js
 *
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
+* @description :: TODO: You might write a short summary of how this type works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/types
 */
 
 module.exports = {
 
   attributes: {
-    ip: {
+    country: {
       type: 'string'
-      
-
-      
-    },
-    location: {
-      type: 'string'
-      
-    },
-
+   },
     referrer:{
       type:'string'
     },
@@ -29,11 +21,6 @@ module.exports = {
     os:{
       type:'string'
     },
-    device:{
-      type:'string'
-    },
-
-
     url: {
       model: 'url'
     }

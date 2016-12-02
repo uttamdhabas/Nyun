@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export function userSignupRequest(userData) {
   return dispatch => {
-    return axios.post('/auth/register', userData);
+    return axios.post('/auth/register', {email:userData.email,password:userData.password,
+      confirmPassword:userData.confirmPassword});
   }
 }
 

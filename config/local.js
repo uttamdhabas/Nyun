@@ -61,7 +61,7 @@ module.exports = {
    ***************************************************************************/
 
    port: process.env.PORT || 80,
-   serviceUrl: "http://ec2-54-179-151-215.ap-southeast-1.compute.amazonaws.com/",
+   serviceUrl: "http://54.179.151.215/",
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *

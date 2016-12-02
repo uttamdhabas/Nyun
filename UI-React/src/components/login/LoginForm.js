@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      login:'',
       errors: {},
       isLoading: false
     };
@@ -30,11 +31,13 @@ class LoginForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    let errors;
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
       this.props.login(this.state).then(
         (res) => this.context.router.push('/url'),
-        (err) => this.setState({ errors: err.response.data.errors, isLoading: false })
+
+        (err) => this.setState({ login: err.response.data.err, isLoading: false })
       );
     }
   }
@@ -44,7 +47,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { errors, email, password, isLoading } = this.state;
+    const { errors, email, password, isLoading,login } = this.state;
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -54,7 +57,7 @@ class LoginForm extends React.Component {
 
         <TextFieldGroup
           field="email"
-          label="Username / Email"
+          label="Email"
           value={email}
           error={errors.email}
           onChange={this.onChange}
@@ -64,7 +67,7 @@ class LoginForm extends React.Component {
           field="password"
           label="Password"
           value={password}
-          error={errors.password}
+          error={login}
           onChange={this.onChange}
           type="password"
         />

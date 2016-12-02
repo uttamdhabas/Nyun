@@ -64,7 +64,7 @@ module.exports = {
         return;
       }
       if (user) {
-        res.json({user: user, token: sailsTokenAuth.issueToken({sid: user.id})});
+        res.json(201,{user: user, token: sailsTokenAuth.issueToken({sid: user.id})});
       }
     });
   },
@@ -81,7 +81,7 @@ module.exports = {
     }
     User.findOneByEmail(email, function(err, user) {
       if(!user){
-        return res.json(401, {err: 'User doesn\'t exist'});
+        return res.json({err: 'User doesn\'t exist'});
       }
       if (err) {
         res.json(err.status, {err: err});

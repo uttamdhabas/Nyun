@@ -27,11 +27,11 @@ export const toggleTodo = (id) => {
     id
   }
 }
-export function addUrl(event) {
+export function addUrl(url) {
   
   return dispatch => {
     
-    return axios.post('/api/v1/url', event).then(res => {
+    return axios.post('/api/v1/url', {target:url.target}).then(res => {
       const data = res.data;
       if(data.new){
         dispatch(addTodo(data))
