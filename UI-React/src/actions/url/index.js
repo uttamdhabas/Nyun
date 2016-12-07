@@ -1,6 +1,7 @@
 
 import axios from 'axios';
-
+import React from 'react'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 
 let nextTodoId = 0
@@ -26,14 +27,16 @@ export const toggleTodo = (id) => {
     id
   }
 }
-export function addUrl(event) {
+export function addUrl(url) {
   
   return dispatch => {
     
-    return axios.post('/api/v1/url', event).then(res => {
+    return axios.post('/api/v1/url', {target:url.target}).then(res => {
       const data = res.data;
       if(data.new){
         dispatch(addTodo(data))
+        
+
       }
       
       
@@ -41,3 +44,13 @@ export function addUrl(event) {
     });
   };
 }
+export function fetchURL() {
+  const request=axios.get('/user/1');
+  return (dispatch)=>{
+    request.then(({data})=>{
+      dispatch({type:'FETCH_URLS', payload:data.url})
+    });
+  };
+  // body...
+}
+

@@ -7,15 +7,16 @@ import SignupPage from './components/signup/SignupPage';
 import LoginPage from './components/login/LoginPage';
 import NewEventPage from './components/events/NewEventPage';
 import UrlBox from './components/urlbox/UrlBox';
+import UserPage from './components/UserPage/UserPage';
 
 import requireAuth from './utils/requireAuth';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Greetings} />
+    <IndexRoute component={requireAuth(UrlBox)} />
     <Route path="signup" component={SignupPage} />
     <Route path="login" component={LoginPage} />
-    <Route path="add-url" component={requireAuth(NewEventPage)} />
-    <Route path="url" component={(UrlBox)} />
+    <Route path="add-url" component={UserPage} />
+    <Route path="url" component={requireAuth(UrlBox)} />
   </Route>
 )

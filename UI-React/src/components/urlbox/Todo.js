@@ -1,18 +1,25 @@
 import React, { PropTypes } from 'react'
 import { Table } from 'semantic-ui-react'
-const Todo = ({ onClick, completed, text,hits }) => (
+import QRCode from 'qrcode.react'
+const Todo = ({ onClick, completed, text,hits,showComponent }) => (
  
- 
+
+
   <Table.Row>
-          <Table.HeaderCell>{text.target}</Table.HeaderCell>
-          <Table.HeaderCell>{text.shortUrl}</Table.HeaderCell>
+          <Table.HeaderCell><a href={text.target} 
+    >{text.target}</a></Table.HeaderCell>
+          <Table.HeaderCell><a href={text.shortUrl}>{text.shortUrl}</a></Table.HeaderCell>
           
           <Table.HeaderCell>{text.hits}</Table.HeaderCell>
-          <Table.HeaderCell>{text.createdAt}</Table.HeaderCell>
+         
+          <Table.HeaderCell><QRCode value={text.shortUrl} size={250}/></Table.HeaderCell>
 
   </Table.Row>
   
   
+  
+  
+
 
 
 

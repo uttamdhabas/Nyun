@@ -7,6 +7,7 @@ class NavigationBar extends React.Component {
   logout(e) {
     e.preventDefault();
     this.props.logout();
+    
   }
 
   render() {
@@ -14,7 +15,7 @@ class NavigationBar extends React.Component {
 
     const userLinks = (
       <ul className="nav navbar-nav navbar-right">
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+        <li><a href="/login" onClick={this.logout.bind(this)}>Logout</a></li>
       </ul>
     );
 

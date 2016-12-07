@@ -20,7 +20,7 @@ export function logout() {
 
 export function login(data) {
   return dispatch => {
-    return axios.post('/auth/authenticate', data).then(res => {
+    return axios.post('/auth/authenticate', {email:data.email,password:data.password}).then(res => {
       const token = res.data.token;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);

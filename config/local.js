@@ -60,8 +60,8 @@ module.exports = {
    * to 80 (http://) or 443 (https://) if you have an SSL certificate        *
    ***************************************************************************/
 
-   port: process.env.PORT || 1337,
-   serviceUrl: "http://ec2-54-179-151-215.ap-southeast-1.compute.amazonaws.com/",
+   port: process.env.PORT || 80,
+   serviceUrl: "http://54.179.151.215/",
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *
@@ -84,3 +84,4 @@ module.exports = {
    // environment: process.env.NODE_ENV || 'development'
 
 };
+
